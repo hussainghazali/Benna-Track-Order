@@ -1,0 +1,1168 @@
+/* Inter font is loaded asynchronously from index.html (non-blocking).
+   Removed duplicate @import here — was render-blocking and shipped 8 weights. */
+
+/* Tailwind directives */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Hide Lovable badge */
+#lovable-badge {
+  display: none !important;
+}
+
+/* Pan animation for background image */
+@keyframes pan {
+  0% {
+    transform: scale(1.1) translate(0, 0);
+  }
+  50% {
+    transform: scale(1.15) translate(-2%, -2%);
+  }
+  100% {
+    transform: scale(1.1) translate(2%, 2%);
+  }
+}
+
+@layer base {
+  :root {
+    /* ============================================================
+       Stripe — Architectural blueprint on white marble.
+       Platinum White canvas, Midnight Ink text, Deep Violet action.
+       All color values in HSL (Tailwind contract).
+       ============================================================ */
+
+    /* Platinum White canvas */
+    --background: 0 0% 100%;
+    /* Midnight Ink #061b31 */
+    --foreground: 212 79% 11%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 212 79% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 212 79% 11%;
+
+    /* Primary — Deep Violet #533afd */
+    --primary: 246 98% 61%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Secondary — Powder Blue #e5edf5 (alt section bg) */
+    --secondary: 213 36% 93%;
+    --secondary-foreground: 212 79% 11%;
+
+    /* Muted — Porcelain White #f8fafd / Slate Blue #50617a */
+    --muted: 213 50% 98%;
+    --muted-foreground: 214 21% 39%;
+
+    /* Accent — Soft Violet #8087ff (decorative / sub-brand) */
+    --accent: 236 100% 75%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 14 100% 54%; /* Vibrant Orange #ff6118 */
+    --destructive-foreground: 0 0% 100%;
+
+    /* Stone Gray #d8d6df hairline */
+    --border: 252 9% 86%;
+    --input: 252 9% 86%;
+    --ring: 246 98% 61%;
+
+    /* Stripe cards use 6px; buttons/inputs/tags 4px */
+    --radius: 0.375rem;
+
+    /* ============================================================
+       Stripe — Extended palette (direct HSL aliases for clarity)
+       ============================================================ */
+    --stripe-midnight: 212 79% 11%; /* #061b31 */
+    --stripe-slate: 214 21% 39%; /* #50617a */
+    --stripe-ghost: 217 17% 47%; /* #64748d */
+    --stripe-porcelain: 213 50% 98%; /* #f8fafd */
+    --surface-header: 225 50% 98%; /* #f9fafd */
+    --stripe-powder: 213 36% 93%; /* #e5edf5 */
+    --stripe-stone: 252 9% 86%; /* #d8d6df */
+    --stripe-violet: 246 98% 61%; /* #533afd */
+    --stripe-violet-soft: 236 100% 75%; /* #8087ff */
+    --stripe-violet-washed: 240 86% 85%; /* #b9b9f9 */
+    --stripe-green: 76 75% 41%; /* #81b81a */
+    --stripe-orange: 14 100% 54%; /* #ff6118 */
+
+    /* Legacy noon-* aliases remapped to the Stripe palette so older
+       components (badges, footer, header) inherit the new look without
+       per-file refactors. */
+    --noon-yellow: 246 98% 61%; /* was Noon yellow → Deep Violet */
+    --noon-dark: 212 79% 11%; /* Midnight Ink */
+    --noon-gray: 214 21% 39%; /* Slate Blue */
+    --noon-light-gray: 213 36% 93%; /* Powder Blue */
+    --noon-blue: 246 98% 61%; /* Deep Violet (CTA blue) */
+    --noon-orange: 14 100% 54%; /* Vibrant Orange */
+    --noon-red: 14 100% 54%;
+    --noon-green: 76 75% 41%; /* Accent Green */
+
+    /* Glassmorphism — toned down to Stripe's soft elevation discipline */
+    --glass-bg: rgba(255, 255, 255, 0.72);
+    --glass-bg-strong: rgba(255, 255, 255, 0.9);
+    --glass-bg-subtle: rgba(255, 255, 255, 0.45);
+    --glass-border: rgba(216, 214, 223, 0.6);
+    --glass-shadow: rgba(23, 23, 23, 0.06) 0px 3px 6px 0px;
+    --glass-shadow-lg: rgba(23, 23, 23, 0.08) 0px 15px 35px 0px;
+    --glass-blur: 16px;
+    --glass-blur-lg: 24px;
+
+    /* Gradient tokens — Stripe's signature hero/showcase gradients */
+    --gradient-sunburst: linear-gradient(
+      90deg,
+      rgb(114, 50, 241) 3.13%,
+      rgb(251, 118, 250) 50%,
+      rgb(255, 207, 94) 100%
+    );
+    --gradient-dreamy: radial-gradient(
+      circle,
+      rgb(127, 125, 252),
+      rgb(244, 75, 204) 33%,
+      rgb(229, 237, 245) 66%
+    );
+    --gradient-fuchsia-glow: linear-gradient(
+      0deg,
+      rgb(255, 46, 222),
+      rgb(210, 152, 255)
+    );
+    --gradient-warm: var(--gradient-sunburst); /* legacy alias */
+    --gradient-gold: linear-gradient(135deg, #533afd 0%, #8087ff 100%);
+    --gradient-dark: linear-gradient(
+      135deg,
+      #061b31 0%,
+      #0a2747 50%,
+      #50617a 100%
+    );
+    --gradient-mesh:
+      radial-gradient(at 20% 80%, rgba(83, 58, 253, 0.1) 0%, transparent 55%),
+      radial-gradient(at 80% 20%, rgba(128, 135, 255, 0.1) 0%, transparent 55%),
+      radial-gradient(at 50% 50%, rgba(229, 237, 245, 0.5) 0%, transparent 60%);
+
+    /* Banner gradient — violet-led for primary marketing surfaces */
+    --banner-gradient: linear-gradient(
+      135deg,
+      hsl(246 98% 61%) 0%,
+      hsl(236 100% 75%) 100%
+    );
+
+    /* Category badge — soft violet wash */
+    --category-badge: linear-gradient(
+      180deg,
+      hsl(236 100% 80%) 0%,
+      hsl(246 98% 61%) 100%
+    );
+
+    /* Shadows — Stripe spec verbatim (xl, xl-2, xl-3, sm) */
+    --shadow-sm: rgba(23, 23, 23, 0.06) 0px 3px 6px 0px;
+    --shadow-md:
+      rgba(50, 50, 93, 0.08) 0px 6px 16px 0px,
+      rgba(23, 23, 23, 0.05) 0px 2px 4px 0px;
+    --shadow-lg:
+      rgba(50, 50, 93, 0.12) 0px 16px 32px 0px,
+      rgba(23, 23, 23, 0.05) 0px 3px 6px 0px;
+    --shadow-xl: rgba(0, 0, 0, 0.2) 0px 0px 32px 8px;
+    --shadow-card: rgba(23, 23, 23, 0.06) 0px 3px 6px 0px;
+    --shadow-feature: rgba(0, 0, 0, 0.2) 0px 0px 32px 8px;
+    --shadow-hover: rgba(50, 50, 93, 0.12) 0px 16px 32px 0px;
+    /* Kept name for compat — now a violet glow */
+    --shadow-glow-yellow:
+      0 0 20px rgba(83, 58, 253, 0.18), 0 0 40px rgba(83, 58, 253, 0.08);
+    --shadow-glow-violet:
+      0 0 20px rgba(83, 58, 253, 0.18), 0 0 40px rgba(83, 58, 253, 0.08);
+  }
+
+  .dark {
+    --background: 212 79% 6%;
+    --foreground: 0 0% 98%;
+
+    --card: 212 60% 9%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 212 60% 9%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 246 98% 61%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 214 30% 16%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 214 30% 16%;
+    --muted-foreground: 217 17% 70%;
+
+    --accent: 236 100% 75%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 14 100% 54%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 214 30% 22%;
+    --input: 214 30% 22%;
+    --ring: 246 98% 61%;
+
+    --glass-bg: rgba(6, 27, 49, 0.72);
+    --glass-bg-strong: rgba(6, 27, 49, 0.9);
+    --glass-bg-subtle: rgba(6, 27, 49, 0.45);
+    --glass-border: rgba(255, 255, 255, 0.08);
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+.animate-fade-out {
+  animation: fadeOut 3s ease-in-out forwards;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family:
+      "Inter",
+      -apple-system,
+      BlinkMacSystemFont,
+      sans-serif;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    overflow-x: hidden;
+  }
+
+  html {
+    scroll-behavior: auto;
+    height: -webkit-fill-available;
+    overflow-x: hidden;
+  }
+
+  #root {
+    overflow-x: hidden;
+  }
+}
+
+@layer components {
+  .overflow-x-auto {
+    -webkit-overflow-scrolling: touch;
+    /* CRITICAL: allow BOTH axes so vertical thumb-swipes on a horizontal
+       carousel still scroll the page (fixes "stuck scroll" on mobile/PWA) */
+    touch-action: pan-x pan-y;
+    overscroll-behavior-x: contain;
+    overscroll-behavior-y: auto;
+  }
+
+  /* Allow native vertical scroll everywhere — fixes Appilix WebView scroll-stuck bug */
+  html,
+  body {
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-x pan-y;
+    overscroll-behavior-y: auto;
+  }
+
+  /* Ensure every horizontal carousel never traps a vertical swipe */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    touch-action: pan-x pan-y;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* ========== GLASSMORPHISM UTILITIES ========== */
+  .glass {
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
+  }
+
+  .glass-strong {
+    background: var(--glass-bg-strong);
+    backdrop-filter: blur(var(--glass-blur-lg));
+    -webkit-backdrop-filter: blur(var(--glass-blur-lg));
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow-lg);
+  }
+
+  .glass-subtle {
+    background: var(--glass-bg-subtle);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .glass-card {
+    background: var(--glass-bg-strong);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow:
+      var(--shadow-card),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .glass-card:hover {
+    box-shadow:
+      var(--shadow-lg),
+      inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+  }
+
+  /* ========== GRADIENT UTILITIES ========== */
+  .gradient-mesh-bg {
+    background-image: var(--gradient-mesh);
+    background-color: hsl(var(--background));
+  }
+
+  /* Stripe sunburst gradient — hero / feature backdrops */
+  .bg-stripe-sunburst {
+    background: var(--gradient-sunburst);
+  }
+  .bg-stripe-dreamy {
+    background: var(--gradient-dreamy);
+  }
+  .bg-stripe-fuchsia {
+    background: var(--gradient-fuchsia-glow);
+  }
+
+  /* Sunburst rail — a slim luminous band for hero edges */
+  .stripe-sunburst-rail {
+    background: var(--gradient-sunburst);
+    box-shadow: 0 12px 48px -12px rgba(127, 50, 241, 0.45);
+  }
+
+  /* Soft sunburst aura behind hero (low-opacity wash) */
+  .stripe-hero-aura {
+    position: relative;
+    isolation: isolate;
+  }
+  .stripe-hero-aura::before {
+    content: "";
+    position: absolute;
+    inset: -10% -5% auto -5%;
+    height: 70%;
+    background: var(--gradient-dreamy);
+    opacity: 0.22;
+    filter: blur(70px);
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  /* Stripe typographic primitives */
+  .stripe-display {
+    font-weight: 300 !important;
+    letter-spacing: -0.035em;
+    line-height: 1.05;
+    font-family:
+      "Inter",
+      system-ui,
+      -apple-system,
+      sans-serif;
+  }
+  .stripe-heading {
+    font-weight: 300;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+  }
+  .stripe-eyebrow {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: hsl(var(--stripe-violet));
+  }
+
+  .gradient-section {
+    position: relative;
+    overflow: hidden;
+  }
+  .gradient-section::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background:
+      radial-gradient(
+        ellipse at 30% 20%,
+        rgba(83, 58, 253, 0.06) 0%,
+        transparent 60%
+      ),
+      radial-gradient(
+        ellipse at 70% 80%,
+        rgba(128, 135, 255, 0.05) 0%,
+        transparent 60%
+      );
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ========== SHIMMER & GLOW EFFECTS ========== */
+  .shimmer-border {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .shimmer-border::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.4),
+      transparent
+    );
+    transition: left 0.6s ease;
+  }
+
+  .shimmer-border:hover::after {
+    left: 100%;
+  }
+
+  .glow-yellow {
+    box-shadow: var(--shadow-glow-yellow);
+  }
+
+  .glow-yellow-hover:hover {
+    box-shadow: var(--shadow-glow-yellow);
+  }
+
+  /* ========== HEADER & SEARCH ========== */
+  .search-input {
+    @apply w-full h-10 px-4 rounded-xl;
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    @apply focus:outline-none focus:ring-2 focus:ring-black/20 focus:border-transparent;
+    @apply placeholder:text-muted-foreground;
+    transition: all 0.3s ease;
+  }
+
+  .search-input:focus {
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  }
+
+  /* Category badge style */
+  .category-badge {
+    @apply relative overflow-hidden rounded-2xl;
+    background: linear-gradient(145deg, #8087ff 0%, #533afd 50%, #3f2bd1 100%);
+    box-shadow: 0 4px 16px rgba(255, 193, 7, 0.25);
+  }
+
+  .category-badge::after {
+    content: "";
+    @apply absolute bottom-0 left-0 right-0 h-4;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 20'%3E%3Cpath d='M0 20 Q25 0 50 20 T100 20 L100 20 L0 20 Z' fill='%23FFC107'/%3E%3C/svg%3E")
+      repeat-x;
+    background-size: 50px 20px;
+  }
+
+  /* Promotional banner */
+  .promo-banner {
+    @apply text-white;
+    background: linear-gradient(135deg, #1565c0 0%, #1976d2 50%, #42a5f5 100%);
+  }
+
+  /* Product card hover effect */
+  .product-card {
+    @apply overflow-hidden transition-transform duration-200 ease-out;
+    background: var(--glass-bg-strong);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-card);
+    contain: layout style paint;
+  }
+
+  .product-card:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-4px);
+  }
+
+  /* Primary button — Stripe Deep Violet filled */
+  .btn-primary {
+    @apply font-medium px-6 py-3 rounded;
+    background: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+    box-shadow: var(--shadow-sm);
+    @apply hover:brightness-110 active:brightness-95 transition-all duration-200;
+  }
+
+  .btn-primary:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-1px);
+  }
+
+  /* Navigation link */
+  .nav-link {
+    @apply text-foreground hover:text-primary transition-all duration-200;
+    @apply text-sm font-medium;
+  }
+
+  /* Badge styles — repurposed to Stripe palette */
+  .badge-sale {
+    @apply text-white text-xs font-semibold px-2.5 py-1 rounded;
+    background: hsl(var(--destructive));
+    box-shadow: var(--shadow-sm);
+  }
+
+  .badge-express {
+    @apply text-white text-xs font-semibold px-2.5 py-1 rounded;
+    background: hsl(var(--primary));
+    box-shadow: var(--shadow-sm);
+  }
+
+  /* Carousel navigation */
+  .carousel-nav {
+    @apply absolute top-1/2 -translate-y-1/2 z-10;
+    @apply w-10 h-10 rounded-full;
+    @apply flex items-center justify-center;
+    @apply transition-all duration-300 cursor-pointer;
+    background: var(--glass-bg-strong);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: var(--shadow-md);
+  }
+
+  .carousel-nav:hover {
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-50%) scale(1.05);
+  }
+
+  /* Footer section */
+  .footer-section {
+    @apply border-t border-border;
+    background: linear-gradient(
+      180deg,
+      hsl(var(--background)) 0%,
+      hsl(var(--secondary)) 100%
+    );
+  }
+
+  /* Mega menu dropdown */
+  .mega-menu {
+    @apply absolute left-0 right-0 top-full z-50;
+    background: var(--glass-bg-strong);
+    backdrop-filter: blur(var(--glass-blur-lg));
+    -webkit-backdrop-filter: blur(var(--glass-blur-lg));
+    border-bottom: 1px solid var(--glass-border);
+    box-shadow: var(--shadow-xl);
+  }
+
+  /* Product listing card */
+  .product-listing-card {
+    @apply overflow-hidden transition-transform duration-200 ease-out;
+    background: var(--glass-bg-strong);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .product-listing-card:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
+  }
+
+  /* Filter sidebar */
+  .filter-section {
+    @apply border-b border-border/50 py-3;
+  }
+
+  /* Sort dropdown */
+  .sort-dropdown {
+    @apply rounded-xl z-50;
+    background: var(--glass-bg-strong);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--shadow-xl);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .glass,
+  .glass-strong,
+  .glass-subtle,
+  .glass-card,
+  .product-card,
+  .product-listing-card,
+  .carousel-nav,
+  .mega-menu,
+  .sort-dropdown,
+  .search-input {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
+  .product-card:hover,
+  .product-listing-card:hover,
+  .glass-card:hover,
+  .carousel-nav:hover,
+  .btn-primary:hover {
+    transform: none;
+  }
+
+  /* Smooth scrolling perf: skip rendering offscreen product cards.
+     Disabled on touch devices because content-visibility:auto causes
+     scroll-anchor jumps and stutter on iOS Safari / Appilix WebView. */
+  @media (hover: hover) and (pointer: fine) {
+    .product-listing-card,
+    [data-product-card] {
+      content-visibility: auto;
+      contain-intrinsic-size: 360px;
+    }
+  }
+
+  /* Promote scroll container to its own layer for momentum */
+  html,
+  body {
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-y: auto;
+  }
+
+  /* Disable expensive hover transitions on touch */
+  .group:hover .group-hover\:opacity-0,
+  .group:hover .group-hover\:opacity-100 {
+    transition: none;
+  }
+}
+
+@layer components {
+  /* Smooth transition for dropdown items */
+  .dropdown-item-enter {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+
+  .dropdown-item-enter-active {
+    opacity: 1;
+    transform: translateY(0);
+    transition:
+      opacity 200ms ease-out,
+      transform 200ms ease-out;
+  }
+
+  /* Glow effect on hover */
+  .menu-item-glow {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .menu-item-glow::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.4),
+      transparent
+    );
+    transition: left 0.7s ease;
+  }
+
+  .menu-item-glow:hover::after {
+    left: 100%;
+  }
+
+  /* Subtle icon pulse animation */
+  @keyframes icon-pulse {
+    0%,
+    100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.05);
+    }
+  }
+
+  .icon-pulse:hover .menu-icon {
+    animation: icon-pulse 0.3s ease-in-out;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .bg-noon-yellow {
+    background-color: hsl(var(--noon-yellow));
+  }
+
+  .text-noon-dark {
+    color: hsl(var(--noon-dark));
+  }
+
+  .bg-noon-blue {
+    background-color: hsl(var(--noon-blue));
+  }
+
+  /* Scrollbar styling */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Animation utilities */
+  .animate-slide-in {
+    animation: slideIn 0.3s ease-out;
+  }
+
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-out;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+}
+
+/* ========== SUPER BUTTON ========== */
+.super-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: var(--bg-gradient, linear-gradient(145deg, #0f0f0f, #1c1c1c));
+  border: 2px solid var(--border-color, rgba(255, 255, 255, 0.2));
+  border-radius: 100px;
+  color: #fff;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.4s ease-in-out;
+  box-shadow: 0 0 20px var(--glow-color, rgba(0, 255, 255, 0.1));
+  backdrop-filter: blur(8px);
+  z-index: 1;
+}
+
+.super-button::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: var(
+    --conic-gradient,
+    conic-gradient(from 0deg, #ffd400, #ff9f00, #ffc300, #ffd400)
+  );
+  animation: rotate 4s linear infinite;
+  z-index: -2;
+}
+
+.super-button::after {
+  content: "";
+  position: absolute;
+  inset: 2px;
+  background: #0a0a0a;
+  border-radius: inherit;
+  z-index: -1;
+}
+
+.super-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 40px var(--glow-hover, rgba(0, 255, 255, 0.2));
+}
+
+.super-button:hover .arrow {
+  transform: translateX(6px);
+}
+
+.arrow {
+  width: 22px;
+  height: 22px;
+  transition: transform 0.3s ease-in-out;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* ========== SLIDE ANIMATIONS ========== */
+@keyframes slide-in-up {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-in-right {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes gradient-shift {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.animate-slide-in-up {
+  animation: slide-in-up 0.3s ease-out;
+}
+
+.animate-slide-in-right {
+  animation: slide-in-right 0.3s ease-out;
+}
+
+.animate-fade-in {
+  animation: fade-in 0.2s ease-out;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.4) 50%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient-shift 4s ease infinite;
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 767px) {
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+/* PWA & Mobile safe-area support */
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+  .safe-area-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  .safe-area-top {
+    padding-top: env(safe-area-inset-top);
+  }
+}
+
+/* Reserve space below page so persistent mobile bottom nav (h ~56px + safe area)
+   never hides footer / sticky CTAs / WhatsApp FAB on phones. */
+@media (max-width: 767px) {
+  body {
+    padding-bottom: calc(60px + env(safe-area-inset-bottom, 0px));
+  }
+}
+@media (pointer: coarse) {
+  button,
+  [role="button"] {
+    -webkit-user-select: none;
+    user-select: none;
+  }
+}
+
+/* Standalone PWA / Appilix WebView mode */
+@media (display-mode: standalone) {
+  html,
+  body {
+    /* Don't lock overscroll — it breaks momentum scrolling in some WebViews */
+    overscroll-behavior-y: auto;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-x pan-y;
+  }
+
+  /* All horizontal scrollers must let vertical thumb-swipes through */
+  .overflow-x-auto,
+  .scrollbar-hide,
+  [class*="overflow-x"] {
+    touch-action: pan-x pan-y !important;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* Smooth header hide/show transition utility */
+.header-auto-hide,
+.sticky.top-0.z-50 {
+  transition:
+    transform 350ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 250ms ease-out;
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: translate3d(0, 0, 0);
+}
+.header-auto-hide.is-hidden,
+body[data-header-hidden="1"] .sticky.top-0.z-50 {
+  transform: translate3d(0, -100%, 0);
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Tablet optimizations */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* Desktop optimizations */
+@media (min-width: 1024px) {
+  .grid-cols-5 {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+}
+
+/* ============================================================
+   Homepage Theme Showcase — swap design systems via data-home-theme
+   Scope: wraps the homepage (Index.tsx) only. Does not affect
+   other routes. Toggled by HomeThemeSwitcher.
+   ============================================================ */
+
+/* Apple-inspired skin */
+[data-home-theme="apple"] {
+  --background: 220 12% 96%; /* #f5f5f7 canvas */
+  --foreground: 240 6% 12%; /* #1d1d1f */
+  --card: 0 0% 100%;
+  --card-foreground: 240 6% 12%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 240 6% 12%;
+  --primary: 211 100% 45%; /* #0071e3 Interactive Blue */
+  --primary-foreground: 0 0% 100%;
+  --secondary: 220 7% 89%; /* #e2e2e5 */
+  --secondary-foreground: 240 6% 12%;
+  --muted: 220 12% 96%;
+  --muted-foreground: 0 0% 44%; /* #707070 */
+  --accent: 211 100% 45%;
+  --accent-foreground: 0 0% 100%;
+  --border: 0 0% 84%; /* #d6d6d6 */
+  --input: 0 0% 84%;
+  --ring: 211 100% 45%;
+  --radius: 0.5rem; /* 8px images; buttons get pill via component */
+  font-family:
+    -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text",
+    "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+[data-home-theme="apple"] h1,
+[data-home-theme="apple"] h2,
+[data-home-theme="apple"] h3 {
+  letter-spacing: -0.022em;
+}
+[data-home-theme="apple"] button,
+[data-home-theme="apple"] .btn,
+[data-home-theme="apple"] [role="button"]:not([data-home-theme-switch]) {
+  border-radius: 980px !important;
+}
+[data-home-theme="apple"] .rounded-xl,
+[data-home-theme="apple"] .rounded-2xl,
+[data-home-theme="apple"] .rounded-3xl {
+  border-radius: 18px;
+}
+
+/* Shop.app-inspired skin */
+[data-home-theme="shop"] {
+  --background: 0 0% 100%;
+  --foreground: 0 0% 0%;
+  --card: 0 0% 100%;
+  --card-foreground: 0 0% 0%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 0 0% 0%;
+  --primary: 250 82% 56%; /* #5433eb Shop Violet */
+  --primary-foreground: 0 0% 100%;
+  --secondary: 0 0% 92%; /* #ebebeb */
+  --secondary-foreground: 0 0% 0%;
+  --muted: 0 0% 96%;
+  --muted-foreground: 0 0% 44%; /* #707070 */
+  --accent: 250 82% 56%;
+  --accent-foreground: 0 0% 100%;
+  --border: 0 0% 92%;
+  --input: 0 0% 92%;
+  --ring: 250 82% 56%;
+  --radius: 0.75rem;
+  font-family:
+    "Inter",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    sans-serif;
+  letter-spacing: -0.014em;
+}
+[data-home-theme="shop"] button,
+[data-home-theme="shop"] .btn,
+[data-home-theme="shop"] [role="button"]:not([data-home-theme-switch]) {
+  border-radius: 9999px !important;
+  box-shadow: rgba(69, 36, 219, 0.18) 0 4px 24px 0;
+}
+[data-home-theme="shop"] .rounded-xl,
+[data-home-theme="shop"] .rounded-2xl,
+[data-home-theme="shop"] .rounded-3xl {
+  border-radius: 11.4px;
+}
+[data-home-theme="shop"] img {
+  border-radius: 11.4px;
+}
+
+/* ==========================================================================
+   Mobile: prevent iOS/Safari auto-zoom when focusing form fields.
+   Any control with a computed font-size below 16px triggers a viewport zoom
+   on tap. Force a 16px minimum on touch/small screens while keeping the
+   visual scale via a slight transform-free layout (padding stays intact).
+   ========================================================================== */
+@media (max-width: 1024px) {
+  input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="file"]),
+  select,
+  textarea,
+  [contenteditable="true"] {
+    font-size: 16px !important;
+    line-height: 1.35 !important;
+  }
+}
+
+@media (hover: none) and (pointer: coarse) {
+  input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="file"]),
+  select,
+  textarea,
+  [contenteditable="true"] {
+    font-size: 16px !important;
+  }
+}
+
+/* Keep the layout anchored: no horizontal shift/zoom-out artefacts when the
+   on-screen keyboard opens. */
+@media (max-width: 1024px) {
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+  html,
+  body {
+    max-width: 100%;
+    overflow-x: hidden;
+    touch-action: manipulation;
+  }
+}
