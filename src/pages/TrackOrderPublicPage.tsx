@@ -357,7 +357,7 @@ const TrackOrderPublicPage = () => {
           </div>
         </div>
         {/* Dark Hero Section with Ray Background */}
-        <div className="relative w-full flex flex-col items-center pb-16">
+        <div className="relative w-full flex flex-col items-center pb-28">
           {/* Ray Background — confined to hero */}
           <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none select-none">
             <div className="absolute inset-0 bg-stripe-midnight" />
@@ -381,9 +381,9 @@ const TrackOrderPublicPage = () => {
 
           {/* Announcement Badge */}
           {!order && (
-            <div className="relative z-10 mt-12 sm:mt-16">
+            <div className="relative z-10 mt-20 sm:mt-28">
               <div
-                className="relative inline-flex items-center gap-2 px-5 py-2 min-h-[40px] rounded-full text-sm overflow-hidden"
+                className="relative inline-flex items-center gap-2 px-6 py-2.5 min-h-[44px] rounded-full text-base overflow-hidden"
                 style={{
                   background: 'linear-gradient(135deg, rgba(229,237,245,0.1), rgba(229,237,245,0.05))',
                   backdropFilter: 'blur(20px) saturate(140%)',
@@ -401,14 +401,14 @@ const TrackOrderPublicPage = () => {
           )}
 
           {/* Hero Title */}
-          <div className={`relative z-10 text-center ${order ? 'mt-8 sm:mt-12' : 'mt-8'} mb-6 sm:mb-8 px-4`}>
-            <h1 className="text-4xl sm:text-5xl font-light text-white tracking-tight mb-2">
+          <div className={`relative z-10 text-center ${order ? 'mt-10 sm:mt-16' : 'mt-10'} mb-8 sm:mb-12 px-4`}>
+            <h1 className="text-5xl sm:text-6xl font-light text-white tracking-tight mb-3">
               {t("Track Your", "تتبع")}{' '}
               <span className="bg-gradient-to-b from-stripe-violet-soft via-stripe-violet-soft to-white bg-clip-text text-transparent italic">
                 {t("Order", "طلبك")}
               </span>
             </h1>
-            <p className="text-base sm:text-lg text-stripe-powder/70 font-light" data-speakable="true">
+            <p className="text-lg sm:text-xl text-stripe-powder/70 font-light" data-speakable="true">
               {t(
                 "Enter your order ID to see real-time delivery status",
                 "أدخل رقم طلبك لمعرفة حالة التوصيل في الوقت الفعلي",
