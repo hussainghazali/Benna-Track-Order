@@ -417,27 +417,27 @@ const TrackOrderPublicPage = () => {
           </div>
 
           {/* Search Input — Bolt style on dark hero */}
-          <section aria-label={t('Order search', 'بحث الطلب')} className="relative z-10 w-full max-w-[680px] mx-auto px-4 mb-8">
-            <div className="absolute -inset-[1px] rounded-2xl bg-gradient-to-b from-white/20 to-stripe-violet/10 pointer-events-none" />
+          <section aria-label={t('Order search', 'بحث الطلب')} className="relative z-10 w-full max-w-[820px] mx-auto px-4 mb-8">
+            <div className="absolute -inset-[1px] rounded-3xl bg-gradient-to-b from-white/20 to-stripe-violet/10 pointer-events-none" />
             <form
               onSubmit={handleTrackOrder}
-              className="relative rounded-2xl bg-white/10 backdrop-blur-xl ring-1 ring-white/20 shadow-[0_4px_24px_rgba(0,0,0,0.2)]"
+              className="relative rounded-3xl bg-white/10 backdrop-blur-xl ring-1 ring-white/20 shadow-[0_4px_32px_rgba(0,0,0,0.25)]"
             >
-              <div className="flex items-center px-5 py-4 gap-3">
-                <Search className="size-5 text-stripe-powder/50 flex-shrink-0" />
+              <div className="flex items-center px-7 py-6 gap-4">
+                <Search className="size-6 text-stripe-powder/50 flex-shrink-0" />
                 <input
                   ref={inputRef}
                   type="text"
                   value={orderId}
                   onChange={(e) => setOrderId(e.target.value)}
                   placeholder={t("Order ID (BENNA-ORD-...) or Sub-order ID (BENNA-SUB-...)", "رقم الطلب (BENNA-ORD-...) أو الطلب الفرعي (BENNA-SUB-...)")}
-                  className="flex-1 bg-transparent text-[15px] text-white placeholder-stripe-powder/40 focus:outline-none min-w-0 font-light"
+                  className="flex-1 bg-transparent text-lg text-white placeholder-stripe-powder/40 focus:outline-none min-w-0 font-light"
                   dir="ltr"
                 />
                 <button
                   type="submit"
                   disabled={loading || !orderId.trim()}
-                  className="flex items-center gap-2 px-5 py-2 rounded-full text-sm font-light text-white transition-all duration-200 disabled:opacity-40 disabled:cursor-not-allowed active:scale-95"
+                  className="flex items-center gap-2 px-7 py-3 rounded-full text-base font-light text-white transition-all duration-200 disabled:opacity-40 disabled:cursor-not-allowed active:scale-95"
                   style={{ background: 'linear-gradient(90deg, rgb(114,50,241), rgb(83,58,253))', boxShadow: '0 0 20px hsl(var(--stripe-violet) / 0.4)' }}
                 >
                   {loading ? (
