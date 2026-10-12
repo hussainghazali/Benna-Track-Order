@@ -63,7 +63,7 @@ const OrderProofGallery = ({ proofs, className = "" }: Props) => {
       aria-label={tx("Order proof", "إثبات الطلب")}
     >
       <div className="flex items-center gap-2 mb-4">
-        <Camera className="w-4 h-4 text-[#533afd]" />
+        <Camera className="w-4 h-4 text-[#FF6600]" />
         <h3 className="text-[16px] font-medium text-[#061b31]">
           {tx("Order Proof", "إثبات الطلب")}
         </h3>
@@ -84,7 +84,7 @@ const OrderProofGallery = ({ proofs, className = "" }: Props) => {
                     key={proof._id}
                     type="button"
                     onClick={() => setViewing(proof)}
-                    className="relative aspect-square overflow-hidden rounded-[4px] border border-[#d8d6df] bg-[#e5edf5] focus:outline-none focus:ring-2 focus:ring-[#533afd]"
+                    className="relative aspect-square overflow-hidden rounded-[4px] border border-[#d8d6df] bg-[#e5edf5] focus:outline-none focus:ring-2 focus:ring-[#FF6600]"
                     aria-label={
                       proof.type === "video"
                         ? tx("Play video", "تشغيل الفيديو")

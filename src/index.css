@@ -43,8 +43,8 @@
     --popover: 0 0% 100%;
     --popover-foreground: 212 79% 11%;
 
-    /* Primary — Deep Violet #533afd */
-    --primary: 246 98% 61%;
+    /* Primary — Deep Violet #FF6600 */
+    --primary: 24 100% 50%;
     --primary-foreground: 0 0% 100%;
 
     /* Secondary — Powder Blue #e5edf5 (alt section bg) */
@@ -56,7 +56,7 @@
     --muted-foreground: 214 21% 39%;
 
     /* Accent — Soft Violet #8087ff (decorative / sub-brand) */
-    --accent: 236 100% 75%;
+    --accent: 20 100% 94%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 14 100% 54%; /* Vibrant Orange #ff6118 */
@@ -65,7 +65,7 @@
     /* Stone Gray #d8d6df hairline */
     --border: 252 9% 86%;
     --input: 252 9% 86%;
-    --ring: 246 98% 61%;
+    --ring: 24 100% 50%;
 
     /* Stripe cards use 6px; buttons/inputs/tags 4px */
     --radius: 0.375rem;
@@ -80,7 +80,7 @@
     --surface-header: 225 50% 98%; /* #f9fafd */
     --stripe-powder: 213 36% 93%; /* #e5edf5 */
     --stripe-stone: 252 9% 86%; /* #d8d6df */
-    --stripe-violet: 246 98% 61%; /* #533afd */
+    --stripe-violet: 246 98% 61%; /* #FF6600 */
     --stripe-violet-soft: 236 100% 75%; /* #8087ff */
     --stripe-violet-washed: 240 86% 85%; /* #b9b9f9 */
     --stripe-green: 76 75% 41%; /* #81b81a */
@@ -127,7 +127,7 @@
       rgb(210, 152, 255)
     );
     --gradient-warm: var(--gradient-sunburst); /* legacy alias */
-    --gradient-gold: linear-gradient(135deg, #533afd 0%, #8087ff 100%);
+    --gradient-gold: linear-gradient(135deg, #FF6600 0%, #8087ff 100%);
     --gradient-dark: linear-gradient(
       135deg,
       #061b31 0%,
@@ -182,7 +182,7 @@
     --popover: 212 60% 9%;
     --popover-foreground: 0 0% 98%;
 
-    --primary: 246 98% 61%;
+    --primary: 24 100% 50%;
     --primary-foreground: 0 0% 100%;
 
     --secondary: 214 30% 16%;
@@ -191,7 +191,7 @@
     --muted: 214 30% 16%;
     --muted-foreground: 217 17% 70%;
 
-    --accent: 236 100% 75%;
+    --accent: 20 100% 94%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 14 100% 54%;
@@ -199,7 +199,7 @@
 
     --border: 214 30% 22%;
     --input: 214 30% 22%;
-    --ring: 246 98% 61%;
+    --ring: 24 100% 50%;
 
     --glass-bg: rgba(6, 27, 49, 0.72);
     --glass-bg-strong: rgba(6, 27, 49, 0.9);
@@ -471,7 +471,7 @@
   /* Category badge style */
   .category-badge {
     @apply relative overflow-hidden rounded-2xl;
-    background: linear-gradient(145deg, #8087ff 0%, #533afd 50%, #3f2bd1 100%);
+    background: linear-gradient(145deg, #8087ff 0%, #FF6600 50%, #3f2bd1 100%);
     box-shadow: 0 4px 16px rgba(255, 193, 7, 0.25);
   }
 
@@ -1166,3 +1166,34 @@ body[data-header-hidden="1"] .sticky.top-0.z-50 {
     touch-action: manipulation;
   }
 }
+
+/* ===== Alibaba Design System tokens ===== */
+:root {
+  --ali-orange-500: #FF6600;
+  --ali-orange-600: #E65C00;
+  --ali-orange-100: #FFF0E5;
+  --ali-red-700:    #CC3D00;
+  --ali-ink-900:    #222222;
+  --ali-ink-700:    #444444;
+  --ali-ink-500:    #666666;
+  --ali-ink-400:    #999999;
+  --ali-line-300:   #DDDDDD;
+  --ali-line-200:   #EEEEEE;
+  --ali-bg-100:     #F4F4F4;
+  --ali-bg-0:       #FFFFFF;
+  --ali-success-600:#00A870;
+  --ali-warning-500:#FAAD14;
+  --ali-danger-600: #D93026;
+  --ali-info-600:   #1677FF;
+  --ali-star:       #FFB400;
+  --ali-ai-gradient: linear-gradient(90deg, #6A5CFF 0%, #B14DFF 50%, #FF6A3D 100%);
+  --ali-ai-tint:    #F5F0FF;
+  --radius-xs: 2px; --radius-sm: 4px; --radius-md: 8px;
+  --radius-lg: 12px; --radius-xl: 16px; --radius-pill: 999px;
+  --shadow-1: 0 1px 2px rgba(0,0,0,.06);
+  --shadow-2: 0 4px 12px rgba(0,0,0,.08);
+  --shadow-3: 0 12px 32px rgba(0,0,0,.16);
+  --ease-standard: cubic-bezier(.2, 0, 0, 1);
+  --dur-fast: 120ms; --dur-base: 200ms; --dur-slow: 320ms;
+}
+

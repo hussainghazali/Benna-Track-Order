@@ -213,7 +213,7 @@ const TrackOrderPage = () => {
 
             {loading ? (
               <div className="flex items-center justify-center py-20 bg-white rounded-[6px] border border-[#d8d6df] shadow-sm">
-                <Loader2 className="w-8 h-8 animate-spin text-[#533afd]" />
+                <Loader2 className="w-8 h-8 animate-spin text-[#FF6600]" />
               </div>
             ) : !order ? (
               <div className="text-center py-16 bg-white rounded-[6px] border border-[#d8d6df] shadow-sm">
@@ -231,7 +231,7 @@ const TrackOrderPage = () => {
                 </p>
                 <Button
                   asChild
-                  className="bg-[#533afd] hover:bg-[#422bc7] text-white font-light rounded-[4px] px-6 py-2.5"
+                  className="bg-[#FF6600] hover:bg-[#E65C00] text-white font-light rounded-[4px] px-6 py-2.5"
                 >
                   <Link to="/account/orders">
                     {tx("View All Orders", "عرض جميع الطلبات")}
@@ -243,7 +243,7 @@ const TrackOrderPage = () => {
                 {/* Track Order Header */}
                 <div className="bg-white rounded-[6px] shadow-sm border border-[#d8d6df] mb-6 p-6">
                   <div className="flex items-center gap-3 mb-2">
-                    <div className="w-8 h-1 bg-[#533afd] rounded-full" />
+                    <div className="w-8 h-1 bg-[#FF6600] rounded-full" />
                     <h2 className="text-[22px] font-medium text-[#061b31]">
                       {tx("Track Order", "تتبع الطلب")}
                     </h2>
@@ -284,7 +284,7 @@ const TrackOrderPage = () => {
                           {/* Progress Line */}
                           <div className="absolute top-[60px] left-[10%] right-[10%] h-0.5 bg-[#d8d6df] z-0" />
                           <div
-                            className="absolute top-[60px] left-[10%] h-0.5 bg-[#533afd] z-0"
+                            className="absolute top-[60px] left-[10%] h-0.5 bg-[#FF6600] z-0"
                             style={{
                               width: `${(currentStep / (STEPS.length - 1)) * 80}%`,
                             }}
@@ -303,9 +303,9 @@ const TrackOrderPage = () => {
                                   <div
                                     className={`w-12 h-12 rounded-full flex items-center justify-center mb-4 shadow-sm ${
                                       isCurrent
-                                        ? "bg-[#533afd] text-white"
+                                        ? "bg-[#FF6600] text-white"
                                         : isActive
-                                          ? "bg-[#533afd] text-white"
+                                          ? "bg-[#FF6600] text-white"
                                           : "bg-white border border-[#d8d6df] text-[#64748d]"
                                     }`}
                                   >
@@ -318,7 +318,7 @@ const TrackOrderPage = () => {
                                     {step.description}
                                   </p>
                                   {isCurrent && (
-                                    <span className="text-[10px] font-semibold text-[#533afd] bg-[#e5edf5] px-2 py-1 rounded">
+                                    <span className="text-[10px] font-semibold text-[#FF6600] bg-[#e5edf5] px-2 py-1 rounded">
                                       {tx("CURRENT", "الحالي")}
                                     </span>
                                   )}
@@ -342,9 +342,9 @@ const TrackOrderPage = () => {
                                 <div
                                   className={`w-10 h-10 rounded-full flex items-center justify-center border-2 shrink-0 ${
                                     isCurrent
-                                      ? "bg-[#533afd] border-[#533afd] text-white shadow-md"
+                                      ? "bg-[#FF6600] border-[#FF6600] text-white shadow-md"
                                       : isActive
-                                        ? "bg-[#533afd] border-[#533afd] text-white"
+                                        ? "bg-[#FF6600] border-[#FF6600] text-white"
                                         : "bg-white border-2 border-[#d8d6df] text-[#64748d]"
                                   }`}
                                 >
@@ -352,7 +352,7 @@ const TrackOrderPage = () => {
                                 </div>
                                 {!isLast && (
                                   <div
-                                    className={`w-0.5 h-12 mt-1 ${isActive ? "bg-[#533afd]" : "bg-[#d8d6df]"}`}
+                                    className={`w-0.5 h-12 mt-1 ${isActive ? "bg-[#FF6600]" : "bg-[#d8d6df]"}`}
                                   />
                                 )}
                               </div>
@@ -366,7 +366,7 @@ const TrackOrderPage = () => {
                                   {step.description}
                                 </p>
                                 {isCurrent && (
-                                  <p className="text-xs font-semibold text-[#533afd] mt-1">
+                                  <p className="text-xs font-semibold text-[#FF6600] mt-1">
                                     {tx("Current Status", "الحالة الحالية")}
                                   </p>
                                 )}
@@ -383,7 +383,7 @@ const TrackOrderPage = () => {
                   {/* Items Box */}
                   <div className="bg-white rounded-[6px] shadow-sm border border-[#d8d6df] p-6">
                     <div className="flex items-center gap-2 mb-4">
-                      <Package className="w-4 h-4 text-[#533afd]" />
+                      <Package className="w-4 h-4 text-[#FF6600]" />
                       <h3 className="text-[16px] font-medium text-[#061b31]">
                         {tx("Items in this order", "منتجات هذا الطلب")}
                       </h3>
@@ -413,7 +413,7 @@ const TrackOrderPage = () => {
                             {order.products?.[0]?.quantity}
                           </span>{" "}
                           •{" "}
-                          <span className="text-[#533afd] font-medium">
+                          <span className="text-[#FF6600] font-medium">
                             {locNum(safeNum(order.products?.[0]?.price))}{" "}
                             <RiyalSymbol />
                           </span>
@@ -425,7 +425,7 @@ const TrackOrderPage = () => {
                   {/* Delivery Info Box */}
                   <div className="bg-white rounded-[6px] shadow-sm border border-[#d8d6df] p-6">
                     <div className="flex items-center gap-2 mb-4">
-                      <MapPin className="w-4 h-4 text-[#533afd]" />
+                      <MapPin className="w-4 h-4 text-[#FF6600]" />
                       <h3 className="text-[16px] font-medium text-[#061b31]">
                         {tx("Delivery Information", "معلومات التوصيل")}
                       </h3>
@@ -455,7 +455,7 @@ const TrackOrderPage = () => {
                       </div>
                     </div>
                     {!isCancelled && currentStep < STEPS.length - 1 && (
-                      <div className="mt-4 pt-4 border-t border-[#d8d6df] flex items-center gap-2 text-[#533afd] text-[12px] font-medium">
+                      <div className="mt-4 pt-4 border-t border-[#d8d6df] flex items-center gap-2 text-[#FF6600] text-[12px] font-medium">
                         <Sparkles className="w-[14px] h-[14px]" />
                         {tx(
                           "ESTIMATED DELIVERY WITHIN 3-5 BUSINESS DAYS",

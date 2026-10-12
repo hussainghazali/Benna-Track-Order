@@ -64,7 +64,7 @@ const ComingSoonModal = ({
                     duration: 0.3,
                     ease: "easeOut",
                   }}
-                  className="inline-flex items-center justify-center w-16 h-16 rounded-[6px] bg-[#533afd] mx-auto mb-6 shadow-sm"
+                  className="inline-flex items-center justify-center w-16 h-16 rounded-[6px] bg-[#FF6600] mx-auto mb-6 shadow-sm"
                 >
                   <FeatureIcon className="w-8 h-8 text-white" />
                 </motion.div>
@@ -74,10 +74,10 @@ const ComingSoonModal = ({
                   initial={{ opacity: 0, y: 8 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.25, duration: 0.3 }}
-                  className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#e5edf5] border border-[#533afd]/20 mb-5"
+                  className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#e5edf5] border border-[#FF6600]/20 mb-5"
                 >
-                  <Rocket className="w-3 h-3 text-[#533afd]" />
-                  <span className="text-xs font-medium tracking-wide text-[#533afd]">
+                  <Rocket className="w-3 h-3 text-[#FF6600]" />
+                  <span className="text-xs font-medium tracking-wide text-[#FF6600]">
                     {isRTL ? "قريباً" : "COMING SOON"}
                   </span>
                 </motion.div>
@@ -111,7 +111,7 @@ const ComingSoonModal = ({
                 >
                   <Button
                     onClick={() => onOpenChange(false)}
-                    className="bg-[#533afd] hover:bg-[#422bc7] text-white font-medium px-6 py-2.5 rounded-[4px] transition-all duration-200 shadow-sm"
+                    className="bg-[#FF6600] hover:bg-[#E65C00] text-white font-medium px-6 py-2.5 rounded-[4px] transition-all duration-200 shadow-sm"
                   >
                     {isRTL ? "حسناً، فهمت" : "Got it"}
                   </Button>
