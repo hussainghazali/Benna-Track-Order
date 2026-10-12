@@ -182,9 +182,9 @@ const AccountSidebar = () => {
       "flex items-center gap-3 px-4 py-3 transition-all duration-200 w-full text-left",
       isRTL ? "border-r-2 text-right" : "border-l-2",
       item.comingSoon
-        ? "border-transparent hover:bg-violet-50 text-gray-500 cursor-pointer"
+        ? "border-transparent hover:bg-ali-orange-100 text-gray-500 cursor-pointer"
         : isActive(item.path)
-          ? "bg-violet-600/10 border-violet-600 text-violet-700"
+          ? "bg-ali-orange-500/10 border-ali-orange-500 text-ali-ink-900"
           : "border-transparent hover:bg-gray-50 text-gray-600",
     );
 
@@ -196,8 +196,8 @@ const AccountSidebar = () => {
             item.comingSoon
               ? "text-gray-600"
               : isActive(item.path)
-                ? "text-violet-700"
-                : "text-gray-500 group-hover:text-violet-600",
+                ? "text-ali-ink-900"
+                : "text-gray-500 group-hover:text-ali-orange-500",
           )}
         />
         <span className="flex-1 text-sm font-medium">{item.label}</span>
@@ -208,7 +208,7 @@ const AccountSidebar = () => {
           </span>
         ) : (
           item.badge && (
-            <span className="text-xs font-bold text-violet-700 bg-violet-50 px-2 py-0.5 rounded-full">
+            <span className="text-xs font-bold text-ali-ink-900 bg-ali-orange-100 px-2 py-0.5 rounded-full">
               {item.badge}
             </span>
           )
@@ -243,7 +243,7 @@ const AccountSidebar = () => {
       {/* Mobile Menu Toggle Button */}
       <button
         onClick={() => setIsMobileMenuOpen(true)}
-        className="lg:hidden fixed bottom-6 right-6 z-50 w-14 h-14 bg-violet-600 text-white rounded-full shadow-lg flex items-center justify-center hover:bg-violet-600 transition-colors"
+        className="lg:hidden fixed bottom-6 right-6 z-50 w-14 h-14 bg-ali-orange-500 text-white rounded-full shadow-lg flex items-center justify-center hover:bg-ali-orange-500 transition-colors"
         aria-label={isRTL ? "القائمة" : "Menu"}
       >
         <Menu className="w-6 h-6" />
@@ -289,7 +289,7 @@ const AccountSidebar = () => {
             {/* User Info Card - Mobile */}
             <div className="bg-white rounded-xl border-2 border-gray-200 p-4 shadow-sm">
               <div className="flex items-center gap-3 mb-3">
-                <div className="w-12 h-12 rounded-full bg-violet-600 flex items-center justify-center text-base font-black text-white shrink-0">
+                <div className="w-12 h-12 rounded-full bg-ali-orange-500 flex items-center justify-center text-base font-black text-white shrink-0">
                   {user?.name ? getInitials(user.name) : "U"}
                 </div>
                 <div className="flex-1 min-w-0">
@@ -306,12 +306,12 @@ const AccountSidebar = () => {
               <Link
                 to="/benna-pro"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="flex items-center justify-between bg-violet-50 rounded-xl px-3 py-2.5 hover:bg-violet-100 transition-all border border-violet-200"
+                className="flex items-center justify-between bg-ali-orange-100 rounded-xl px-3 py-2.5 hover:bg-ali-orange-100 transition-all border border-orange-200"
               >
                 <div className="flex items-center gap-2">
-                  <Sparkles className="w-4 h-4 text-violet-700 shrink-0" />
+                  <Sparkles className="w-4 h-4 text-ali-ink-900 shrink-0" />
                   <span className="text-sm font-bold text-black">benna</span>
-                  <span className="bg-violet-600 text-white text-xs font-bold px-1.5 py-0.5 rounded shrink-0">
+                  <span className="bg-ali-orange-500 text-white text-xs font-bold px-1.5 py-0.5 rounded shrink-0">
                     PRO
                   </span>
                   <span className="text-sm text-gray-600">
@@ -320,7 +320,7 @@ const AccountSidebar = () => {
                 </div>
                 <ChevronRight
                   className={cn(
-                    "w-4 h-4 text-violet-600 shrink-0",
+                    "w-4 h-4 text-ali-orange-500 shrink-0",
                     isRTL && "rotate-180",
                   )}
                 />
@@ -337,21 +337,21 @@ const AccountSidebar = () => {
                   className={cn(
                     "flex items-center gap-3 px-4 py-3 transition-all duration-200 w-full",
                     isActive(item.path)
-                      ? "bg-violet-600/10 border-l-2 border-violet-600 text-violet-700"
+                      ? "bg-ali-orange-500/10 border-l-2 border-ali-orange-500 text-ali-ink-900"
                       : "border-l-2 border-transparent hover:bg-gray-50 text-gray-600", 
                   )}
                 >
                   <item.icon
                     className={cn(
                       "w-5 h-5 shrink-0 transition-colors",
-                      isActive(item.path) ? "text-violet-700" : "text-gray-500",
+                      isActive(item.path) ? "text-ali-ink-900" : "text-gray-500",
                     )}
                   />
                   <span className="flex-1 text-sm font-medium">
                     {item.label}
                   </span>
                   {item.badge && (
-                    <span className="text-xs font-bold text-violet-700 bg-violet-50 px-2 py-0.5 rounded-full shrink-0">
+                    <span className="text-xs font-bold text-ali-ink-900 bg-ali-orange-100 px-2 py-0.5 rounded-full shrink-0">
                       {item.badge}
                     </span>
                   )}
@@ -375,7 +375,7 @@ const AccountSidebar = () => {
                     className={cn(
                       "flex items-center gap-3 px-4 py-3 transition-all duration-200 w-full",
                       isActive(item.path)
-                        ? "bg-violet-600/10 border-l-2 border-violet-600 text-violet-700"
+                        ? "bg-ali-orange-500/10 border-l-2 border-ali-orange-500 text-ali-ink-900"
                         : "border-l-2 border-transparent hover:bg-gray-50 text-gray-600",
                     )}
                   >
@@ -383,7 +383,7 @@ const AccountSidebar = () => {
                       className={cn(
                         "w-5 h-5 shrink-0 transition-colors",
                         isActive(item.path)
-                          ? "text-violet-700"
+                          ? "text-ali-ink-900"
                           : "text-gray-500",
                       )}
                     />
@@ -403,7 +403,7 @@ const AccountSidebar = () => {
         {/* User Info Card - Yellow Theme */}
         <div className="bg-white rounded-xl border-2 border-gray-200 p-5 mb-5 shadow-sm hover:shadow-md transition-shadow">
           <div className="flex items-center gap-3 mb-4">
-            <div className="w-14 h-14 rounded-full bg-violet-600 flex items-center justify-center text-lg font-black text-white">
+            <div className="w-14 h-14 rounded-full bg-ali-orange-500 flex items-center justify-center text-lg font-black text-white">
               {user?.name ? getInitials(user.name) : "U"}
             </div>
             <div className="flex-1 min-w-0">
@@ -417,12 +417,12 @@ const AccountSidebar = () => {
           {/* Membership Badge - Yellow Theme */}
           <Link
             to="/benna-pro"
-            className="flex items-center justify-between bg-violet-50 rounded-xl px-3 py-2.5 hover:bg-violet-100 transition-all border border-violet-200"
+            className="flex items-center justify-between bg-ali-orange-100 rounded-xl px-3 py-2.5 hover:bg-ali-orange-100 transition-all border border-orange-200"
           >
             <div className="flex items-center gap-2">
-              <Sparkles className="w-4 h-4 text-violet-700" />
+              <Sparkles className="w-4 h-4 text-ali-ink-900" />
               <span className="text-sm font-bold text-black">benna</span>
-              <span className="bg-violet-600 text-white text-xs font-bold px-1.5 py-0.5 rounded">
+              <span className="bg-ali-orange-500 text-white text-xs font-bold px-1.5 py-0.5 rounded">
                 PRO
               </span>
               <span className="text-sm text-gray-600">
@@ -430,7 +430,7 @@ const AccountSidebar = () => {
               </span>
             </div>
             <ChevronRight
-              className={cn("w-4 h-4 text-violet-600", isRTL && "rotate-180")}
+              className={cn("w-4 h-4 text-ali-orange-500", isRTL && "rotate-180")}
             />
           </Link>
         </div>

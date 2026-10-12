@@ -438,7 +438,7 @@ const TrackOrderPublicPage = () => {
                   type="submit"
                   disabled={loading || !orderId.trim()}
                   className="flex items-center gap-2 px-7 py-3 rounded-full text-base font-light text-white transition-all duration-200 disabled:opacity-40 disabled:cursor-not-allowed active:scale-95"
-                  style={{ background: 'linear-gradient(90deg, #FF6600, #E65C00)', boxShadow: '0 0 20px hsl(var(--stripe-violet) / 0.4)' }}
+                  style={{ background: 'linear-gradient(90deg, #FA6400, #E85A00)', boxShadow: '0 0 20px hsl(var(--stripe-violet) / 0.4)' }}
                 >
                   {loading ? (
                     <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
