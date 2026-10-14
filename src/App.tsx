@@ -7,6 +7,7 @@ import { WishlistProvider } from "@/contexts/WishlistContext";
 import AuthPage from "@/pages/AuthPage";
 import TrackOrderPublicPage from "@/pages/TrackOrderPublicPage";
 import TrackOrderPage from "@/pages/TrackOrderPage";
+import SideActionRail from "@/components/sections/SideActionRail";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
                 <Route path="*" element={<Navigate to="/track-order" replace />} />
               </Routes>
               <Toaster richColors position="top-center" />
+              <SideActionRail />
             </BrowserRouter>
           </WishlistProvider>
         </CartProvider>
