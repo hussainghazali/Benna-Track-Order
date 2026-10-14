@@ -193,7 +193,7 @@ const TrackOrderPage = () => {
   return (
     <div className="min-h-screen bg-gray-50" dir={isRTL ? "rtl" : "ltr"}>
       <Header />
-      <main className="w-full px-3 sm:px-4 lg:px-6 xl:px-8 py-4 sm:py-6">
+      <main className="mx-auto w-full max-w-[1400px] px-4 lg:px-6 xl:px-8 py-4 sm:py-6">
         <div className="flex flex-col lg:flex-row gap-4 lg:gap-6">
           <div className="hidden lg:block">
             <AccountSidebar />
