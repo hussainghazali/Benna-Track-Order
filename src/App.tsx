@@ -8,6 +8,7 @@ import AuthPage from "@/pages/AuthPage";
 import TrackOrderPublicPage from "@/pages/TrackOrderPublicPage";
 import TrackOrderPage from "@/pages/TrackOrderPage";
 import SideActionRail from "@/components/sections/SideActionRail";
+import CartDrawer from "@/components/CartDrawer";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
               </Routes>
               <Toaster richColors position="top-center" />
               <SideActionRail />
+              <CartDrawer />
             </BrowserRouter>
           </WishlistProvider>
         </CartProvider>
