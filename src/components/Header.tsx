@@ -78,7 +78,7 @@ const Header = () => {
             </button>
           ) : (
             <Link
-              to="/login?redirect=/track-order"
+              to="/welcome?redirect=/track-order"
               className="font-semibold text-ali-ink-900 hover:text-ali-orange-500"
             >
               {t("Log in", "تسجيل الدخول")}
