@@ -356,109 +356,62 @@ const TrackOrderPublicPage = () => {
             </span>
           </div>
         </div>
-        {/* Dark Hero Section with Ray Background */}
-        <div className="relative w-full flex flex-col items-center pb-28">
-          {/* Ray Background — confined to hero */}
-          <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none select-none">
-            <div className="absolute inset-0 bg-stripe-midnight" />
-            <div
-              className="absolute left-1/2 -translate-x-1/2 w-[4000px] h-[1800px] sm:w-[6000px]"
-              style={{
-                background: `radial-gradient(circle at center 800px, hsl(var(--stripe-violet) / 0.7) 0%, hsl(var(--stripe-violet) / 0.3) 14%, hsl(var(--stripe-violet) / 0.15) 18%, hsl(var(--stripe-violet) / 0.06) 22%, hsl(var(--stripe-midnight) / 0.2) 25%)`
-              }}
-            />
-            <div
-              className="absolute top-[175px] left-1/2 w-[1600px] h-[1600px] sm:top-1/2 sm:w-[3043px] sm:h-[2865px]"
-              style={{ transform: 'translate(-50%) rotate(180deg)' }}
-            >
-              <div className="absolute w-full h-full rounded-full bg-stripe-midnight -mt-[13px]" style={{ background: 'radial-gradient(43.89% 25.74% at 50.02% 97.24%, hsl(212 79% 14%) 0%, hsl(var(--stripe-midnight)) 100%)', border: '16px solid hsl(var(--stripe-powder) / 0.9)', transform: 'rotate(180deg)', zIndex: 5 }} />
-              <div className="absolute w-full h-full rounded-full bg-stripe-midnight -mt-[11px]" style={{ border: '23px solid hsl(var(--stripe-violet-washed) / 0.6)', transform: 'rotate(180deg)', zIndex: 4 }} />
-              <div className="absolute w-full h-full rounded-full bg-stripe-midnight -mt-[8px]" style={{ border: '23px solid hsl(var(--stripe-violet-soft) / 0.5)', transform: 'rotate(180deg)', zIndex: 3 }} />
-              <div className="absolute w-full h-full rounded-full bg-stripe-midnight -mt-[4px]" style={{ border: '23px solid hsl(var(--stripe-violet) / 0.7)', transform: 'rotate(180deg)', zIndex: 2 }} />
-              <div className="absolute w-full h-full rounded-full bg-stripe-midnight" style={{ border: '20px solid hsl(var(--stripe-violet) / 0.8)', boxShadow: '0 -15px 24.8px hsl(var(--stripe-violet) / 0.6)', transform: 'rotate(180deg)', zIndex: 1 }} />
-            </div>
-          </div>
-
-          {/* Announcement Badge */}
-          {!order && (
-            <div className="relative z-10 mt-20 sm:mt-28">
-              <div
-                className="relative inline-flex items-center gap-2 px-6 py-2.5 min-h-[44px] rounded-full text-base overflow-hidden"
-                style={{
-                  background: 'linear-gradient(135deg, rgba(229,237,245,0.1), rgba(229,237,245,0.05))',
-                  backdropFilter: 'blur(20px) saturate(140%)',
-                  boxShadow: 'inset 0 1px rgba(229,237,245,0.2), inset 0 -1px rgba(0,0,0,0.1), 0 8px 32px -8px rgba(0,0,0,0.1), 0 0 0 1px rgba(229,237,245,0.08)'
-                }}
-              >
-                <span className="absolute top-0 left-0 right-0 h-1/2 pointer-events-none opacity-70 mix-blend-overlay" style={{ background: 'radial-gradient(ellipse at center top, rgba(229,237,245,0.15) 0%, transparent 70%)' }} />
-                <span className="absolute -top-px left-1/2 -translate-x-1/2 h-[2px] w-[100px] opacity-60" style={{ background: 'linear-gradient(90deg, transparent 0%, hsl(var(--stripe-violet) / 0.8) 20%, hsl(var(--stripe-violet-soft) / 0.8) 50%, hsl(var(--stripe-violet) / 0.8) 80%, transparent 100%)', filter: 'blur(0.5px)' }} />
-                <Bolt className="size-4 relative z-10 text-stripe-powder" />
-                <span className="relative z-10 text-stripe-powder font-light">
-                  {t("Real-time Order Tracking", "تتبع الطلب في الوقت الفعلي")}
-                </span>
-              </div>
-            </div>
-          )}
-
-          {/* Hero Title */}
-          <div className={`relative z-10 text-center ${order ? 'mt-10 sm:mt-16' : 'mt-10'} mb-8 sm:mb-12 px-4`}>
-            <h1 className="text-5xl sm:text-6xl font-light text-white tracking-tight mb-3">
-              {t("Track Your", "تتبع")}{' '}
-              <span className="bg-gradient-to-b from-stripe-violet-soft via-stripe-violet-soft to-white bg-clip-text text-transparent italic">
-                {t("Order", "طلبك")}
-              </span>
+        {/* Hero Band — full-bleed peach bg, centered content */}
+        <div className="bg-ali-orange-100/60">
+          <div className="mx-auto w-full max-w-[1400px] px-4 lg:px-6 xl:px-8 py-10 sm:py-14">
+            <h1 className="text-[26px] sm:text-[30px] font-bold leading-tight tracking-tight text-ali-ink-900">
+              {isAr ? (
+                <>تتبع طلبك <span className="text-ali-orange-500">في الوقت الفعلي</span></>
+              ) : (
+                <>Track your order <span className="text-ali-orange-500">in real time</span></>
+              )}
             </h1>
-            <p className="text-lg sm:text-xl text-stripe-powder/70 font-light" data-speakable="true">
+            <p className="mt-1.5 text-[14px] text-ali-ink-500" data-speakable="true">
               {t(
                 "Enter your order ID to see real-time delivery status",
                 "أدخل رقم طلبك لمعرفة حالة التوصيل في الوقت الفعلي",
               )}
             </p>
-          </div>
 
-          {/* Search Input — Bolt style on dark hero */}
-          <section aria-label={t('Order search', 'بحث الطلب')} className="relative z-10 w-full max-w-[820px] mx-auto px-4 mb-8">
-            <div className="absolute -inset-[1px] rounded-3xl bg-gradient-to-b from-white/20 to-stripe-violet/10 pointer-events-none" />
+            {/* Search bar — white card inside the band */}
             <form
               onSubmit={handleTrackOrder}
-              className="relative rounded-3xl bg-white/10 backdrop-blur-xl ring-1 ring-white/20 shadow-[0_4px_32px_rgba(0,0,0,0.25)]"
+              aria-label={t('Order search', 'بحث الطلب')}
+              className="mt-6 flex w-full items-center gap-3 rounded-xl border border-ali-line-200 bg-white px-5 py-4 shadow-sm"
             >
-              <div className="flex items-center px-7 py-6 gap-4">
-                <Search className="size-6 text-stripe-powder/50 flex-shrink-0" />
-                <input
-                  ref={inputRef}
-                  type="text"
-                  value={orderId}
-                  onChange={(e) => setOrderId(e.target.value)}
-                  placeholder={t("Order ID (BENNA-ORD-...) or Sub-order ID (BENNA-SUB-...)", "رقم الطلب (BENNA-ORD-...) أو الطلب الفرعي (BENNA-SUB-...)")}
-                  className="flex-1 bg-transparent text-lg text-white placeholder-stripe-powder/40 focus:outline-none min-w-0 font-light"
-                  dir="ltr"
-                />
-                <button
-                  type="submit"
-                  disabled={loading || !orderId.trim()}
-                  className="flex items-center gap-2 px-7 py-3 rounded-full text-base font-light text-white transition-all duration-200 disabled:opacity-40 disabled:cursor-not-allowed active:scale-95"
-                  style={{ background: 'linear-gradient(90deg, #FA6400, #E85A00)', boxShadow: '0 0 20px hsl(var(--stripe-violet) / 0.4)' }}
-                >
-                  {loading ? (
-                    <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                  ) : (
-                    <>
-                      <span className="hidden sm:inline">{t("Track", "تتبع")}</span>
-                      <SendHorizontal className="size-4" />
-                    </>
-                  )}
-                </button>
-              </div>
+              <Search className="size-5 shrink-0 text-ali-ink-400" />
+              <input
+                ref={inputRef}
+                type="text"
+                value={orderId}
+                onChange={(e) => setOrderId(e.target.value)}
+                placeholder={t("Order ID (BENNA-ORD-...) or Sub-order ID (BENNA-SUB-...)", "رقم الطلب (BENNA-ORD-...) أو الطلب الفرعي (BENNA-SUB-...)")}
+                className="min-w-0 flex-1 bg-transparent text-[15px] text-ali-ink-900 placeholder-ali-ink-400 focus:outline-none"
+                dir="ltr"
+              />
+              <button
+                type="submit"
+                disabled={loading || !orderId.trim()}
+                className="flex items-center gap-2 rounded-full bg-ali-orange-500 px-6 py-2.5 text-[15px] font-semibold text-white transition-colors hover:bg-ali-orange-600 disabled:cursor-not-allowed disabled:opacity-50"
+              >
+                {loading ? (
+                  <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                ) : (
+                  <>
+                    <span>{t("Track", "تتبع")}</span>
+                    <SendHorizontal className="size-4" />
+                  </>
+                )}
+              </button>
             </form>
 
             {error && (
-              <div className="mt-3 p-3 bg-red-500/10 border border-red-500/20 rounded-xl text-red-200 text-sm font-light flex items-center gap-2" role="alert">
-                <AlertCircle className="w-4 h-4 flex-shrink-0" />
+              <div className="mt-3 flex items-center gap-2 rounded-xl border border-ali-danger/20 bg-red-50 p-3 text-sm text-ali-danger" role="alert">
+                <AlertCircle className="w-4 h-4 shrink-0" />
                 {error}
               </div>
             )}
-          </section>
+          </div>
         </div>
 
         {/* Order Results — Light Stripe cards */}
