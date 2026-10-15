@@ -415,7 +415,8 @@ const TrackOrderPublicPage = () => {
 
         {/* Order Results — Light Stripe cards */}
         {order && (
-          <section aria-label={t('Order results', 'نتائج الطلب')} className="relative z-10 w-full max-w-[680px] mx-auto px-4 -mt-6 pb-12 space-y-5">
+          <section aria-label={t('Order results', 'نتائج الطلب')} className="relative z-10 mx-auto w-full max-w-[1400px] px-4 lg:px-6 xl:px-8 pb-12">
+            <div className="mx-auto w-full max-w-[860px] space-y-5">
             {/* Order Header Card */}
             <article
               className="bg-white border border-stripe-stone rounded-[6px] p-5"
@@ -718,6 +719,7 @@ const TrackOrderPublicPage = () => {
                 <SendHorizontal className="w-4 h-4 mr-2 text-stripe-violet" />
                 {t("Contact Support", "اتصل بالدعم")}
               </Button>
+            </div>
             </div>
           </section>
         )}
