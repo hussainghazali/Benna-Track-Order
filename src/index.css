@@ -57,7 +57,7 @@
 
     /* Accent — Soft Violet #8087ff (decorative / sub-brand) */
     --accent: 20 100% 94%;
-    --accent-foreground: 0 0% 100%;
+    --accent-foreground: 0 0% 13.3%;
 
     --destructive: 14 100% 54%; /* Vibrant Orange #ff6118 */
     --destructive-foreground: 0 0% 100%;
@@ -192,7 +192,7 @@
     --muted-foreground: 217 17% 70%;
 
     --accent: 20 100% 94%;
-    --accent-foreground: 0 0% 100%;
+    --accent-foreground: 0 0% 13.3%;
 
     --destructive: 14 100% 54%;
     --destructive-foreground: 0 0% 100%;
