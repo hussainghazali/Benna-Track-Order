@@ -356,7 +356,7 @@ const TrackOrderPublicPage = () => {
           </div>
         </div>
         {/* Hero Band — full-bleed peach bg, centered content */}
-        <div className="bg-ali-orange-100/60">
+        <div className="w-full bg-ali-orange-100/60">
           <div className="mx-auto w-full max-w-[1400px] px-4 lg:px-6 xl:px-8 py-10 sm:py-14">
             <h1 className="text-[26px] sm:text-[30px] font-bold leading-tight tracking-tight text-ali-ink-900">
               {isAr ? (
