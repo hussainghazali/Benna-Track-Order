@@ -12,7 +12,6 @@ import {
   MapPin,
   CreditCard,
   SendHorizontal,
-  Bolt,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { apiClient } from "@/lib/api-client";
