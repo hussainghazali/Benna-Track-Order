@@ -1,4 +1,5 @@
 import { locNum } from "@/utils/formatPrice";
+import BennaLoader from "@/components/BennaLoader";
 import RiyalSymbol from "@/components/ui/RiyalSymbol";
 import { useState, useEffect } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
@@ -10,7 +11,6 @@ import { Button } from "@/components/ui/button";
 import {
   ArrowLeft,
   ArrowRight,
-  Loader2,
   Package,
   CheckCircle2,
   Truck,
@@ -213,7 +213,7 @@ const TrackOrderPage = () => {
 
             {loading ? (
               <div className="flex items-center justify-center py-20 bg-white rounded-[6px] border border-[#d8d6df] shadow-sm">
-                <Loader2 className="w-8 h-8 animate-spin text-[#FA6400]" />
+                <BennaLoader size="md" />
               </div>
             ) : !order ? (
               <div className="text-center py-16 bg-white rounded-[6px] border border-[#d8d6df] shadow-sm">
